@@ -38,6 +38,7 @@ class BlogIndex extends React.Component {
                     __html: node.frontmatter.description || node.excerpt,
                   }}
                 />
+                <p>{node.timeToRead} min</p>
               </section>
             </article>
           )
@@ -68,6 +69,7 @@ export const pageQuery = graphql`
             title
             description
           }
+          timeToRead
         }
       }
     }
