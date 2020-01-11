@@ -14,13 +14,13 @@ import { rhythm } from "../utils/typography"
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
+      # avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      #   childImageSharp {
+      #     fixed(width: 50, height: 50) {
+      #       ...GatsbyImageSharpFixed
+      #     }
+      #   }
+      # }
       site {
         siteMetadata {
           author
@@ -37,7 +37,7 @@ const Bio = () => {
         marginBottom: rhythm(2.5),
       }}
     >
-      <Image
+      {/* <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
         style={{
@@ -49,10 +49,9 @@ const Bio = () => {
         imgStyle={{
           borderRadius: `50%`,
         }}
-      />
+      /> */}
       <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
+        Written by <strong>{author}</strong> who lives and works in Washington DC building useful things.
       </p>
     </div>
   )

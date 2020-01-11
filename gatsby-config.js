@@ -1,9 +1,15 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const targetAddress = new URL(process.env.TARGET_ADDRESS || `http://preview.michaelbychkowski.me`);
+
 module.exports = {
   siteMetadata: {
     title: `i Dabble Blog`,
     author: `Michael Bychkowski`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://michaelbychkowski.me`,
     social: {
       twitter: `#`,
     },
@@ -28,6 +34,25 @@ module.exports = {
     //     },
     //   },
     // },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: process.env.TARGET_BUCKET_NAME || "fake-bucket",
+        region: process.env.AWS_REGION || "us-east-1",
+        protocol: targetAddress.protocol.slice(0, -1),
+        hostname: targetAddress.hostname,
+        acl: null,
+        params: {
+          // In case you want to add any custom content types: https://github.com/jariz/gatsby-plugin-s3/blob/master/recipes/custom-content-type.md
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: targetAddress.href.slice(0, -1),
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
