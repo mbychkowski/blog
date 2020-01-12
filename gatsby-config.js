@@ -6,7 +6,7 @@ const targetAddress = new URL(process.env.TARGET_ADDRESS || `http://preview.mich
 
 module.exports = {
   siteMetadata: {
-    title: `i Dabble Blog`,
+    title: `The Dabble Blog`,
     author: `Michael Bychkowski`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://michaelbychkowski.me`,

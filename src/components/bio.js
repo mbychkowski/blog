@@ -51,7 +51,7 @@ const Bio = () => {
         }}
       /> */}
       <p>
-        Written by <strong>{author}</strong> who lives and works in Washington DC building useful things.
+        Written by <strong>{author}</strong> who lives and works in Washington DC.
       </p>
     </div>
   )
