@@ -10,10 +10,10 @@ phases:
       - "yarn install --frozen-lockfile --production"
   build:
     commands:
-      - "yarn run build"
+      - "yarn build"
   post_build:
     commands:
-      - "yarn run deploy"
+      - "yarn deploy"
 artifacts:
   base-directory: public
   files:
