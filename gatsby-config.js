@@ -2,7 +2,7 @@
 //   path: `.env.${process.env.NODE_ENV}`,
 // })
 
-const targetAddress = new URL(process.env.TARGET_ADDRESS || `https://preview.michaelbychkowski.me`);
+const targetAddress = new URL(process.env.TARGET_ADDRESS || `https://michaelbychkowski.me`);
 
 module.exports = {
   siteMetadata: {
