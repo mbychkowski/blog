@@ -1,8 +1,12 @@
-const targetAddress = new URL(process.env.TARGET_ADDRESS || `http://preview.michaelbychkowski.me`);
+// require('dotenv').config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// })
+
+const targetAddress = new URL(process.env.TARGET_ADDRESS || `https://preview.michaelbychkowski.me`);
 
 module.exports = {
   siteMetadata: {
-    title: `A Blog`,
+    title: `A Blog.`,
     author: `Michael Bychkowski`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://michaelbychkowski.me`,
