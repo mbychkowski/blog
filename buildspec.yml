@@ -10,10 +10,10 @@ phases:
       - "yarn install --frozen-lockfile --production"
   build:
     commands:
-      - echo Build started on `Date`
       - "yarn build"
   post_build:
     commands:
+      - echo Deploying to process.env.TARGET_ADDRESS $CLOUDFRONT_DISTRIBUTION
       - "yarn deploy"
 artifacts:
   base-directory: public
