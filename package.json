@@ -54,7 +54,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "deploy": "npm run -n \"-r dotenv/config\" && npm run build && gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id EQNV9872P5OB1 --paths \"/*\"",
+    "deploy": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION --paths \"/*\"",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
