@@ -15,25 +15,35 @@ module.exports = {
     },
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-source-graphql`,
-    //   options: {
-    //     fieldName: `github`,
-    //     typeName: `GitHub`,
-    //     createLink: () =>
-    //       createHttpLink({
-    //         uri: `https://api.github.com/graphql`,
-    //         headers: {
-    //           Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-    //         },
-    //         fetch,
-    //       }),
-    //     createSchema: async () => {
-    //       const json = JSON.parse(fs.readFileSync(`${__dirname}/github.json`))
-    //       return buildClientSchema(json.data)
-    //     },
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-github',
+      options: {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+        },
+        queries: [
+          `{
+            repository(owner: "nebraskajs", name: "speaker-signup") {
+              issues(last: 20, states: OPEN) {
+                edges {
+                  node {
+                    id
+                    author {
+                      avatarUrl
+                      login
+                      url
+                    }
+                    bodyHTML
+                    title
+                    url
+                  }
+                }
+              }
+            }
+          }`,
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
