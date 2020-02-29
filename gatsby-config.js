@@ -1,6 +1,6 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+// require('dotenv').config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// })
 
 const targetAddress = new URL(process.env.TARGET_ADDRESS || `https://preview.michaelbychkowski.me`);
 
