@@ -16,24 +16,58 @@ module.exports = {
   },
   plugins: [
     // {
-    //   resolve: `gatsby-source-graphql`,
+    //   resolve: 'gatsby-source-github',
     //   options: {
-    //     fieldName: `github`,
-    //     typeName: `GitHub`,
-    //     createLink: () =>
-    //       createHttpLink({
-    //         uri: `https://api.github.com/graphql`,
-    //         headers: {
-    //           Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-    //         },
-    //         fetch,
-    //       }),
-    //     createSchema: async () => {
-    //       const json = JSON.parse(fs.readFileSync(`${__dirname}/github.json`))
-    //       return buildClientSchema(json.data)
+    //     headers: {
+    //       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
     //     },
+    //     queries: [
+    //       `query {
+    //         repository(owner: "mbychkowski", name: "blog-content") {
+    //           folder: object(expression: "master:content/") {
+    //             ... on Tree {
+    //               entries {
+    //                 oid
+    //                 object {
+    //                   ... on Blob {
+    //                     text
+    //                   }
+    //                 }
+    //                 name
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }`,
+    //     ],
     //   },
     // },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `blog-content`,
+        remote: `https://github.com/mbychkowski/blog-content.git`,
+        // Optionally supply a branch. If none supplied, you'll get the default branch.
+        branch: `master`,
+        // Tailor which files get imported eg. import the docs folder from a codebase.
+        patterns: `content/**`
+      }
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "GitHub",
+        fieldName: "github",
+        url: "https://api.github.com/graphql",
+        // HTTP headers
+        headers: {
+          // Learn about environment variables: https://gatsby.dev/env-vars
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+        // Additional options to pass to node-fetch
+        fetchOptions: {},
+      },
+    },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
