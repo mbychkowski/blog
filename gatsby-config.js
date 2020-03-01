@@ -15,33 +15,6 @@ module.exports = {
     },
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-source-github',
-    //   options: {
-    //     headers: {
-    //       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-    //     },
-    //     queries: [
-    //       `query {
-    //         repository(owner: "mbychkowski", name: "blog-content") {
-    //           folder: object(expression: "master:content/") {
-    //             ... on Tree {
-    //               entries {
-    //                 oid
-    //                 object {
-    //                   ... on Blob {
-    //                     text
-    //                   }
-    //                 }
-    //                 name
-    //               }
-    //             }
-    //           }
-    //         }
-    //       }`,
-    //     ],
-    //   },
-    // },
     {
       resolve: `gatsby-source-git`,
       options: {
